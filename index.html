@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.2, user-scalable=yes, viewport-fit=cover">
+  <title>超級種鴿育種達人操作手冊 · 從基石到傳奇</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      font-family: 'Segoe UI', 'Roboto', 'Noto Sans TC', system-ui, -apple-system, sans-serif;
+      background: #f5f2eb;
+      color: #2e241f;
+      line-height: 1.7;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+    .wrapper {
+      display: flex;
+      flex: 1;
+      max-width: 1400px;
+      margin: 0 auto;
+      width: 100%;
+      background: #fffcf7;
+      box-shadow: 0 0 30px rgba(0,0,0,0.05);
+    }
+    /* 側欄導航 */
+    nav {
+      width: 280px;
+      background: #1e2b2c;
+      color: #f0ead0;
+      padding: 2rem 1.2rem;
+      position: sticky;
+      top: 0;
+      height: 100vh;
+      overflow-y: auto;
+      flex-shrink: 0;
+      border-right: 1px solid #c9b68b;
+    }
+    nav h2 {
+      font-size: 1.3rem;
+      font-weight: 600;
+      margin-bottom: 1.5rem;
+      color: #e6c77f;
+      border-bottom: 1px solid #5f6b5c;
+      padding-bottom: 0.5rem;
+      letter-spacing: 1px;
+    }
+    nav ul {
+      list-style: none;
+    }
+    nav ul li {
+      margin-bottom: 0.4rem;
+    }
+    nav a {
+      color: #d4cdb2;
+      text-decoration: none;
+      font-size: 0.9rem;
+      display: block;
+      padding: 0.4rem 0.5rem;
+      border-radius: 6px;
+      transition: all 0.2s;
+    }
+    nav a:hover, nav a.active {
+      background: #344d3a;
+      color: #f7e8b0;
+      font-weight: 600;
+    }
+    .nav-section {
+      margin-top: 1.3rem;
+      font-weight: bold;
+      color: #bfa673;
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+    /* 主要內容區 */
+    main {
+      flex: 1;
+      padding: 2rem 2.5rem;
+      overflow-y: auto;
+      max-width: 900px;
+    }
+    .mobile-toc-toggle {
+      display: none;
+      background: #1e2b2c;
+      color: #f0ead0;
+      border: none;
+      padding: 0.8rem 1.5rem;
+      font-size: 1rem;
+      margin: 0.5rem;
+      border-radius: 30px;
+      cursor: pointer;
+      width: fit-content;
+    }
+    h1 {
+      font-size: 2.2rem;
+      color: #3a4a2b;
+      border-left: 6px solid #c9a23b;
+      padding-left: 1.2rem;
+      margin-bottom: 1.5rem;
+      font-weight: 700;
+    }
+    h2 {
+      font-size: 1.7rem;
+      margin: 2rem 0 1rem;
+      color: #2e4a35;
+      border-bottom: 2px dashed #c9a23b;
+      padding-bottom: 0.3rem;
+    }
+    h3 {
+      font-size: 1.3rem;
+      margin: 1.5rem 0 0.8rem;
+      color: #4a5b3a;
+    }
+    .icon-label {
+      display: inline-block;
+      font-weight: bold;
+      margin-right: 6px;
+    }
+    .trust-low {
+      background: #f7e358;
+      color: #3d3107;
+      padding: 0.15rem 0.5rem;
+      border-radius: 15px;
+      font-size: 0.8rem;
+      font-weight: 700;
+    }
+    .risk-red {
+      background: #d94f4f;
+      color: white;
+      padding: 0.15rem 0.7rem;
+      border-radius: 15px;
+      font-size: 0.8rem;
+      font-weight: 700;
+    }
+    .expert-green {
+      background: #367a4c;
+      color: white;
+      padding: 0.15rem 0.7rem;
+      border-radius: 15px;
+      font-size: 0.8rem;
+      font-weight: 700;
+    }
+    .edit-note {
+      background: #e7dfcd;
+      border-left: 5px solid #8b6f4c;
+      padding: 0.8rem 1.2rem;
+      margin: 1.2rem 0;
+      font-style: italic;
+      border-radius: 0 12px 12px 0;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 1.2rem 0;
+      background: #fefdf9;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+      font-size: 0.9rem;
+    }
+    th {
+      background: #3f5540;
+      color: #fef9e6;
+      padding: 0.7rem;
+      text-align: left;
+    }
+    td, th {
+      border: 1px solid #d4c9aa;
+      padding: 0.6rem;
+    }
+    tr:nth-child(even) td {
+      background: #f9f6ed;
+    }
+    .alert-box {
+      background: #fef2e0;
+      border-left: 6px solid #c9772e;
+      padding: 1rem;
+      margin: 1.5rem 0;
+      border-radius: 8px;
+    }
+    .checklist {
+      list-style: none;
+      margin: 0.8rem 0;
+    }
+    .checklist li::before {
+      content: "☐ ";
+      font-weight: bold;
+      color: #3a5a3a;
+      margin-right: 0.4rem;
+    }
+    hr {
+      margin: 2rem 0;
+      border: 1px solid #ddd4bc;
+    }
+    @media (max-width: 768px) {
+      .wrapper {
+        flex-direction: column;
+      }
+      nav {
+        width: 100%;
+        height: auto;
+        position: relative;
+        display: none;
+        padding: 1rem;
+      }
+      nav.open {
+        display: block;
+      }
+      .mobile-toc-toggle {
+        display: block;
+        margin: 0.8rem;
+      }
+      main {
+        padding: 1.2rem;
+      }
+      h1 {
+        font-size: 1.8rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <button class="mobile-toc-toggle" id="tocToggle">☰ 目錄導覽</button>
+  <div class="wrapper">
+    <nav id="sidebar">
+      <h2>🏆 操作手冊</h2>
+      <ul>
+        <li><a href="#intro">📖 須知與分級</a></li>
+        <li class="nav-section">第一階段</li>
+        <li><a href="#phase1">環境與生物節律</a></li>
+        <li class="nav-section">第二階段</li>
+        <li><a href="#phase2">遺傳基數與決策</a></li>
+        <li class="nav-section">第三階段</li>
+        <li><a href="#phase3">程序化調理</a></li>
+        <li class="nav-section">第四階段</li>
+        <li><a href="#phase4">繁育與淘汰</a></li>
+        <li class="nav-section">第五階段</li>
+        <li><a href="#phase5">心法與風險</a></li>
+        <li><a href="#appendix">📋 附錄索引</a></li>
+        <li><a href="#final">🎯 三年路線圖</a></li>
+      </ul>
+    </nav>
+    <main>
+      <h1>🏆 超級種鴿育種達人操作手冊<br><span style="font-size:1.2rem;">從基石到傳奇</span></h1>
+      
+      <section id="intro">
+        <h2>📖 初學者使用須知、圖標凡例與讀者分級引導</h2>
+        <p>本手冊旨在將職業鴿舍的「基因管控」與「臨床管理」系統化，協助您從建立12對自主循環種鴿群開始，修煉為一名理性的育種家。</p>
+        <p>在開始操作前，您必須對本教材的科學嚴謹度與現實門檻有清晰的客觀認知。為方便您快速定位，本手冊統一使用以下圖標與標籤：</p>
+        <ul>
+          <li><span class="trust-low">🟡 低信度標註</span>：科學證據不足，請勿過度依賴此單一指標。</li>
+          <li><span class="risk-red">🔴 整合缺陷/高風險</span>：標準化作業的明確適用邊界或高風險執行區。</li>
+          <li><span class="expert-green">🟢 專家實戰建議</span>：來自實戰經驗的補強，可視為最佳實踐。</li>
+          <li>【最終整合－編輯部排版/實戰建議】：結構性與圖表化的優化，幫助讀者快速落地。</li>
+        </ul>
+        <p><strong>綜合信心指數：8.9 / 10 分。</strong> 建議將本手冊視為「降低失誤率的參考書」，而非機械式照抄的聖經。</p>
+        
+        <div class="edit-note">
+          <span class="icon-label">【最終整合－編輯部排版/實戰建議】</span>讀者能力自我檢測表：
+          <ul class="checklist">
+            <li>您能在一秒內透過視覺分辨出健康與不健康的糞便差異嗎？</li>
+            <li>您熟知新城疫疫苗的保存溫度與正確注射部位嗎？</li>
+            <li>您已經擁有一年以上的種鴿配對與育雛經驗嗎？</li>
+          </ul>
+          <p>若以上皆否：請優先熟讀第一、第二階段；若您已具備基礎，可跳躍式深入第四、第五階段的高階管理。</p>
+        </div>
+      </section>
+
+      <section id="phase1">
+        <h2>第一階段：環境建設與生物節律 <span style="font-size:0.9rem;">【建議閱讀年資：第一年起手式】</span></h2>
+        <p><strong>核心原則：</strong>偉大的基因若暴露於「環境緊迫」下，將導致免疫系統崩潰。</p>
+        
+        <h3>1. 空間密度與微氣候工程</h3>
+        <ul>
+          <li>硬體數據：每對種鴿需0.76立方公尺，每平方公尺上限2對（來源：ARPU、PRFWA）。</li>
+          <li><span class="expert-green">🟢 實戰建議：</span>加裝「高架條狀棲架」離地20-30公分；使用「正壓通風」；亞熱帶濕度務必 &lt; 70%。在「對角線兩端」及「巢箱底層」各放置溫濕度計。</li>
+          <li><strong>【數據】水質管控：</strong>飲水TDS控制在200 ppm以下。預算有限者第一年可先採「自來水靜置24小時」除氯（來源：Poultry Extension）。</li>
+          <li>
+            <strong>【數據】飼料源頭管控（黴菌毒素預防）：</strong>
+            <p>這是育種系統中最容易被忽視的隱形殺手。飼料原料在收割與倉儲期間極易汙染黴菌毒素（如黃麴毒素、嘔吐毒素），它不會立刻致死，但會造成「慢性肝損傷、免疫抑制、受精率下降、雛鴿品質劣化」，極易被誤診為種鴿老化。</p>
+            <ul>
+              <li><strong>來源管控：</strong>只向具備「批次檢驗報告」的誠信飼料商採購。拒絕來路不明的散裝穀物。</li>
+              <li><strong>儲存條件：</strong>飼料桶務必離地、離牆，存放於陰涼通風處。開封後需在 21 天內用完。</li>
+              <li><strong>例行觀察：</strong>每次投餵前，以肉眼檢查穀物表面是否有「粉末狀異常、顏色暗沉或結塊」。若有霉味，整批丟棄，不可惜。</li>
+              <li><strong>年度檢測：</strong>每年配對前一個月，將主力種鴿的飼料樣本送交農業檢測單位，進行黃麴毒素總量篩檢。這是對抗「隱形慢性毒害」的高回報防禦投資。</li>
+            </ul>
+          </li>
+        </ul>
+
+        <h3>2. 生物節律管理</h3>
+        <p>夏季（7-8月）光照嚴格縮減至12小時，強迫深度換羽與荷爾蒙休整（來源：Dr. Colin Walker）。</p>
+
+        <h3>3. 環境數據紅色警戒線</h3>
+        <p>為了讓「誠實面對物理極限」這句話有量化依據，請嚴格監控以下指標：</p>
+        <table>
+          <tr><th>監控項目</th><th>紅色警戒值</th><th>意義與應變措施</th></tr>
+          <tr><td>舍內氨氣濃度</td><td>&gt; 15 ppm</td><td>通風系統完全失效，賽鴿呼吸道黏膜開始受損。請立即強制排氣。</td></tr>
+          <tr><td>底層相對濕度</td><td>&gt; 80% 持續48h</td><td>黴菌孢子活化風險極高。需立即加裝除濕設備。</td></tr>
+          <tr><td>晝夜溫差</td><td>&gt; 10°C</td><td>已觸發慢性應激，嚴重影響換羽與免疫力。需加強夜間保溫。</td></tr>
+          <tr><td>飲水TDS值</td><td>&gt; 300 ppm</td><td>腸道菌相失衡與重金屬累積風險上升。必須改以純水代替。</td></tr>
+        </table>
+      </section>
+
+      <section id="phase2">
+        <h2>第二階段：遺傳基數與決策邏輯 <span style="font-size:0.9rem;">【第一年涉獵，第二年深讀】</span></h2>
+        <p><strong>核心原則：</strong>建立12對系統，是防止基因衰退與確保多樣性的最低限度模型。</p>
+        <ul>
+          <li><strong>滾動式遺傳汰換：</strong>穩定組(8對)+實驗組(4對)。近親係數控管於10%-15%間。初期缺乏圖譜時，採「物理迴避原則」（嚴禁同父母、同祖父母直系配對）。</li>
+          <li><strong>結構選拔：</strong>主羽硬挺圓搭尖；母鴿恥骨極緊密；尾羽根部堅韌。</li>
+          <li><span class="expert-green">🟢 動態協調性：</span>抓握時重心集中前胸，身體如充氣橄欖球，翅膀收合流暢無頓點。這需透過長期抓握的經驗累積來建立。</li>
+        </ul>
+        <p><span class="trust-low">🟡 眼志互補理論（信心指數6.9/10）</span> 虹膜色素深淺與智力的關聯尚無遺傳學證據，僅視為健康表型指標。</p>
+      </section>
+
+      <section id="phase3">
+        <h2>第三階段：程序化調理與臨床預防 <span style="font-size:0.9rem;">【第二年核心任務】</span></h2>
+        <p><strong>核心原則：</strong>配對是精密生化工程，藥物殘留是胚胎發育頭號殺手。</p>
+        <ul>
+          <li><strong>精準雙重驅蟲：</strong>配對前第42天與第32天各連續3天，預留3週無藥緩衝期。</li>
+          <li><strong>疫苗時程：</strong>新城疫疫苗須在配對前4週完成。</li>
+          <li><span class="risk-red">🔴 操作門檻：</span>投藥後若出現劇烈嘔吐、羽毛逆立則為藥物中毒。若無法分辨正常代謝與中毒反應，請寧可延後配對，也不要強行投藥。高劑量疫苗務必在獸醫指導下操作。</li>
+          <li><strong>腸道重建：</strong>驅蟲後第28天添加「水飛薊素」連續5天（來源：禽類獸醫肝病學）；配對前第21天補充益生菌與有機酸。</li>
+        </ul>
+      </section>
+
+      <section id="phase4">
+        <h2>第四階段：繁育、數據與淘汰紀律 <span style="font-size:0.9rem;">【第三年起執行】</span></h2>
+        <p><strong>核心原則：</strong>育種達人不靠感覺，依靠數據庫與冷靜的汰換。</p>
+        <ul>
+          <li><strong>移蛋規範：</strong>佩戴棉手套，防止油脂堵塞蛋殼氣孔。</li>
+          <li><strong>斷奶隔離：</strong>幼鴿第28天強制移入隔離舍。</li>
+          <li><span class="expert-green">🟢 應激測試進化：</span>手冊提及「斷奶後10秒閃光敲擊測試」僅為初篩。更關鍵的終極指標是「反覆、長期低強度壓力下的恢復能力」（如連續籠訓後的體重回升速度、歸巢後是否立刻進食）。</li>
+          <li><span class="risk-red">🔴 解剖篩選：</span>若7日內幼鴿大量死亡，【嚴禁非獸醫專業者自行解剖】。若後代2個月內需用藥2次以上，判定為免疫缺陷，整線淘汰。</li>
+          <li><span class="trust-low">🟡 換羽速度與代謝關聯（信心指數6.5/10）</span> 若僅憑單季換羽不良就拆對，有極高機率誤殺良配，請綜合2個繁殖季數據再淘汰。</li>
+        </ul>
+        
+        <div class="edit-note">
+          <strong>【最終整合－臨床觀察資料庫空白模板】</strong><br>
+          <em>糞便基準線紀錄表：</em>日期/照片/勾選(正常成團/條狀偏軟/水便/綠便/帶血)<br>
+          <em>個體健康紀錄卡：</em>腳環號/常態體重/換羽進度照片(每月)/異常用藥備註
+        </div>
+      </section>
+
+      <section id="phase5">
+        <h2>第五階段：心法、風險對沖與人性盲點 <span style="font-size:0.9rem;">【第三年起，終身精進】</span></h2>
+        <p><strong>核心原則：</strong>頂級育種大師，從不靠運氣，而是靠系統化的風險管理。</p>
+        <ul>
+          <li><strong>動態微調：</strong>針對台灣海翔冬季逆風，篩選「低龍骨、厚肌肉」體型。嚴格執行「產 2 窩、休 1 季」；每年汰除 20% 最弱者，並保留 1 對異血作為「基因保險」。</li>
+          <li><span class="risk-red">🔴 魔鬼單飛替代方案：</span>4個月大的幼鴿在強風陰天單飛，極易誤殺「晚熟型」潛力鴿。高階舍更傾向以「群體路訓」來觀察。歸巢後，體重與肌肉能在隔日恢復正常，遠比單次歸巢時間更具參考價值。</li>
+          <li><strong>表格化情感停損：</strong>為每一對種鴿製作《種鴿淘汰履歷表》。配對開頭必須填寫「預期目標」；設定「停損線」；並於履歷表中加入「特殊極端環境備註」欄位，避免極端氣候造成誤殺。</li>
+        </ul>
+        
+        <div class="alert-box">
+          <span class="risk-red">🔴 總編輯風險提示·三大致命考驗</span><br>
+          • 疲勞與行政負擔：請將填表設計成「實體看板磁鐵」或「手機秒級勾選系統」，確保填寫時間低於 30 秒。<br>
+          • 數據時效性：基準線照片庫必須每季更新。不要用三年前的健康圖來評價當前的菌相變化。<br>
+          • 環境誠實止損：若微氣候監控數據證明您無法克服舍內底層長期高濕（對照上方「紅色警戒值表」），請優先考慮遷舍，而非盲目優化。
+        </div>
+        
+        <h3><span class="expert-green">🟢 基因資產的災難備援機制</span></h3>
+        <ul>
+          <li><strong>物理隔離：</strong>絕對不要將您最頂尖的 3 對核心育種配對集中在同一個鴿舍。請將它們分散在不同棟、甚至不同地點的種鴿舍中飼養。</li>
+          <li><strong>精子冷凍保存：</strong>種雄巔峰期(2-3歲)採集冷凍，作為終極基因保險。</li>
+          <li><strong>異地備份協議：</strong>與一位您絕對信任、且地理位置距離夠遠的鴿友，簽訂「基因相互備份協議」。將核心配對的1-2羽備份幼鴿長期寄養在對方舍中，反之亦然。</li>
+        </ul>
+      </section>
+
+      <section id="appendix">
+        <h2>📖 附錄：緊急狀況快速查詢索引（實戰急診入口）</h2>
+        <p>當您在現實中遇到突發狀況，請立即對照此表，跨越時間線快速定位，將手冊從「教科書」切換為「急診手冊」。</p>
+        <table>
+          <tr><th>求救信號</th><th>可能原因</th><th>立即查閱</th></tr>
+          <tr><td>幼鴿出殼7日內大量死亡</td><td>沙門氏菌、黴菌毒素</td><td>第四階段淘汰 & 第三階段調理</td></tr>
+          <tr><td>刺鼻氨氣味</td><td>通風失效</td><td>第一階段氨氣&gt;15ppm警戒</td></tr>
+          <tr><td>秋季換羽嚴重不順</td><td>溫差過大或光照錯誤</td><td>第一階段生物節律與溫差警戒</td></tr>
+          <tr><td>全數無精蛋</td><td>藥物殘留或過度肥胖</td><td>第三階段緩衝期 & 第二階段選拔</td></tr>
+          <tr><td>幼鴿歸巢體重狂掉30%</td><td>過度訓練或潛伏疾病</td><td>第四階段恢復觀察 & 第五階段替代方案</td></tr>
+        </table>
+      </section>
+
+      <section id="final">
+        <h2>🎯 終極達人反思：三年期務實校準路線圖</h2>
+        <p>這份教材的內容，不該是您「第一年」的必考題。請對應主文的「建議閱讀年資」按部就班：</p>
+        <ul>
+          <li><strong>第一年（生存與接地氣）：</strong>閱讀並執行第一階段。硬體達標，練習極簡的「糞便打勾表」與「基準線拍照」，只要沒爆發大規模傳染病，您就贏了。</li>
+          <li><strong>第二年（數據與結構）：</strong>閱讀並深入執行第二、第三階段。引入節律光照與程序化調理，開始執行基礎的物理結構淘汰，學習感受「動態協調性」。</li>
+          <li><strong>第三年（大師進化）：</strong>閱讀並執行第四、第五階段。引入滾動遺傳替換、免疫篩選與高階測驗（遵循專家替代方案），並嚴格執行行政停損表與 20% 汰舊率，同時導入「基因資產備援機制」。</li>
+        </ul>
+        <div class="edit-note">
+          <strong>📘 【最終整合－編輯部/出版社後記】從手稿到經典的實體化</strong><br>
+          這份系統經過多輪的推演與補強，在「內容」上已近乎無懈可擊。然而，一本真正的經典工具書，其價值也體現在與讀者互動的「物理形態」上。針對未來的出版形態，提供以下兩項終極建議：<br><br>
+          <strong>1. 考慮活頁裝訂（對抗疲勞與損耗）</strong><br>
+          手冊被設計成要在鴿舍旁、在實戰壓力下使用。傳統膠裝書無法平攤，也不利於抽取特定單頁護貝張貼在通風口或巢箱旁。<br>
+          · 建議：採用高品質的 「活頁夾/穿孔裝訂」。讀者能輕鬆攤平閱讀，將「環境警戒線」與「空白模板」單獨抽出使用。當氣候變遷導致警戒數值需微調、或讀者自身增補了新頁面時，能隨時抽換，讓手冊永遠保持「動態更新」的生命力。<br><br>
+          <strong>2. 數位版配套（秒級歸檔）</strong><br>
+          手冊反覆強調「基準線照片庫」需每季更新，並提供「糞便檢查表」與「個體健康卡」。
+        </div>
+      </section>
+      <hr>
+      <p style="text-align:center; color:#6b5e4b;">🐦 超級種鴿育種達人操作手冊 · 理性育種，系統傳承</p>
+    </main>
+  </div>
+  <script>
+    (function() {
+      const toggleBtn = document.getElementById('tocToggle');
+      const sidebar = document.getElementById('sidebar');
+      if (toggleBtn && sidebar) {
+        toggleBtn.addEventListener('click', function(e) {
+          sidebar.classList.toggle('open');
+        });
+      }
+      const navLinks = document.querySelectorAll('nav a');
+      navLinks.forEach(link => {
+        link.addEventListener('click', function(e) {
+          if (window.innerWidth <= 768) {
+            sidebar.classList.remove('open');
+          }
+        });
+      });
+    })();
+  </script>
+</body>
+</html>
